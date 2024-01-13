@@ -1,0 +1,98 @@
+@import "variables";
+
+button {
+  cursor: pointer;
+
+  height: 50px;
+
+  border: none;
+  border-radius: 3px;
+
+  font: $Raleway;
+  font-size: 18px;
+  color: white;
+  letter-spacing: 0.5px;
+
+  &.button-blue {
+    background-color: $lightTeal;
+
+    &:hover {
+      background-color: $lightCyan;
+    }
+  }
+
+  &.button-green {
+    background-color: $slimyGreen;
+
+    &:hover {
+      background-color: $yellowyGreen;
+    }
+  }
+
+  &.button-red {
+    background-color: $salmon;
+
+    &:hover {
+      background-color: $tomato;
+    }
+  }
+}
+
+input {
+  width: 100%;
+  height: 50px;
+
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0 0 0 16px;
+
+  border: solid 1px white;
+  border-radius: 3px;
+  outline: 0;
+
+  font: $Raleway;
+  font-size: 15px;
+  color: $coolGrey;
+
+  &.error {
+    border: solid 1px $salmon;
+  }
+}
+
+::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  color: $silver;
+}
+
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: $silver;
+}
+
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: $silver;
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: $silver;
+}
+
+/*
+ *  Mobile
+ */
+@media (max-width: $desktopContentWidth) {
+  button .name {
+    display: none;
+  }
+}
+
+/*
+ *  Desktop
+ */
+@media (min-width: $desktopContentWidth) {
+  button .short-name {
+    display: none;
+  }
+}

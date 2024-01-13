@@ -1,0 +1,32 @@
+@import "variables";
+
+.person-list {
+  line-height: 0px;
+}
+
+.floating-parrits .person {
+  background-color: $veryLightPink;
+  color: $salmon;
+}
+
+.drag-layer .person,
+.pairing-board .person {
+  background-color: $salmon;
+  color: white;
+}
+
+.person {
+  position: relative;
+  display: inline-block;
+  border-radius: 26px;
+
+  padding: 17.5px 20px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+
+  font: $Raleway-Bold;
+  font-size: 13px;
+  letter-spacing: 1px;
+
+  cursor: move;
+}

@@ -1,0 +1,28 @@
+@import "variables";
+
+footer {
+  height: 20px;
+  padding: 5px 10px 0;
+
+  font: $Raleway-Medium;
+  font-size: 10px;
+  line-height: 14px;
+  color: $coolGrey;
+
+  .fake-copyright {
+    float: left;
+  }
+
+  .footer-links {
+    float: right;
+
+    a {
+      color: $coolGrey;
+      margin-right: 20px;
+
+      &:last-child {
+        margin-right: 0px;
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+@import "variables";
+
+.role-list {
+  line-height: 0px;
+  margin-bottom: 6px;
+}
+
+.drag-layer .role,
+.pairing-board .role {
+  background-color: $lightTeal;
+  color: white;
+}
+
+.role {
+  position: relative;
+  display: inline-block;
+  border-radius: 10px;
+
+  padding: 3px 9px;
+  margin-right: 2px;
+  margin-bottom: 2px;
+
+  font: $Overlock-Bold;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  cursor: move;
+}

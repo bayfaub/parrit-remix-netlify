@@ -1,0 +1,91 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800);
+@import url(https://fonts.googleapis.com/css?family=Overlock:700,900);
+
+// colors
+
+$slateGrey: #58595b;
+$coolGrey: #8d9096;
+$silver: #caced5;
+$lightGrey: #e8e8e8;
+
+$lightTeal: #89d4e5;
+$lightCyan: #9ef1ff;
+$duckEggBlue: #e8f7fa;
+
+$yellow: #f7f4a9;
+$banana: #f2ed7a;
+$yellowyGreen: #d4f338;
+$slimyGreen: #bdd63e;
+$lightKhaki: #f6fae5;
+
+$tomato: #ef3e33;
+$salmon: #f3736c;
+$lightSalmon: #f9bfbb;
+$veryLightPink: #fce1df;
+$purple: #f373ee;
+
+$lightTan: #f7f4a9;
+
+// sizes
+
+$desktopContentWidth: 875px;
+$mobileContentWidth: 375px;
+$desktopImageWidth: 431px;
+$desktopImageHeight: 265px;
+$mobileImageWidth: 349px;
+$mobileImageHeight: 212px;
+
+// fonts
+/*
+ *  Use these with the "font:" property.
+ *
+ *  Place overrides below, eg font-size, line-height
+ */
+
+$Overlock-Black: normal normal 900 30px Overlock;
+$Overlock-Bold: normal normal 700 30px Overlock;
+$Raleway-Thin: normal normal 300 30px Raleway;
+$Raleway: normal normal 400 30px Raleway;
+$Raleway-Medium: normal normal 500 30px Raleway;
+$Raleway-SemiBold: normal normal 600 30px Raleway;
+$Raleway-Bold: normal normal 700 30px Raleway;
+$Raleway-ExtraBold: normal normal 800 30px Raleway;
+
+body {
+  font: $Raleway-Thin;
+  font-size: 18px;
+  line-height: 28px;
+  color: $coolGrey;
+}
+
+h1 {
+  font: $Overlock-Black;
+  font-size: 36px;
+  line-height: 44px;
+  color: $slateGrey;
+}
+
+h2 {
+  font: $Raleway-Medium;
+  font-size: 22px;
+  line-height: 26px;
+  color: $coolGrey;
+
+  margin-top: 0;
+}
+
+h3 {
+  font: $Overlock-Black;
+  font-size: 15px;
+  line-height: 18px;
+  color: $coolGrey;
+  letter-spacing: 0.5px;
+
+  margin-top: 0;
+  text-transform: uppercase;
+}
+
+.caption {
+  font-size: 15px;
+  line-height: 18px;
+}

@@ -7,7 +7,9 @@
     "build": "remix build",
     "dev": "remix dev",
     "start": "netlify serve",
-    "typecheck": "tsc -b"
+    "typecheck": "tsc -b",
+    "build:css": "node-sass ./styles -o ./app/styles --output-style compressed",
+    "dev:css": "npm run build:css && node-sass -rw ./styles -o ./app/styles"
   },
   "dependencies": {
     "@netlify/functions": "^2.0.0",
@@ -15,6 +17,7 @@
     "@remix-run/node": "^2.5.0",
     "@remix-run/react": "^2.5.0",
     "cross-env": "^7.0.3",
+    "node-sass": "^9.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
