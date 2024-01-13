@@ -1,72 +1,45 @@
-# Welcome to Remix!
+# Parrit
 
-- [Remix Docs](https://remix.run/docs)
-- [Netlify Functions Overview](https://docs.netlify.com/functions/overview)
+A historical recommendation engine for daily pair rotation management, with an interactive visual aide of each pairing team.
+Visit the app: https://parrit.io/
 
-## Netlify Setup
+## Tech Stack
 
-1. Install the [Netlify CLI](https://docs.netlify.com/cli/get-started/):
+- Supabase
+- Netlify
+- Remix.run
+- ReactJS
 
-```sh
-npm i -g netlify-cli
-```
+## Local Development
 
-If you have previously installed the Netlify CLI, you should update it to the latest version:
+### Initialize local database
 
-```sh
-npm i -g netlify-cli@latest
-```
+[Docs Reference](https://supabase.com/docs/guides/cli/getting-started)
 
-2. Sign up and log in to Netlify:
+1. [Install supabase cli](https://supabase.com/docs/guides/cli/getting-started)
+2. [Install Docker](https://docs.docker.com/get-docker/)
+3. `supabase start` (this will take awhile on first launch)
+4. you can stop supabase with `supabase stop`
 
-```sh
-netlify login
-```
+## Core Contributors
 
-3. Create a new site:
+Big shoutout to the following people for helping to guide the direction that Parrit took. Core contributors also please feel free to add others to the core contributor list for those who significantly shape the direction of Parrit.
 
-```sh
-netlify init
-```
+- [Anthony Dreessen](mailto:anthonydreessen@gmail.com) - Product Owner, Product Management + Full-stack Development
+- [Darcie Fitzpatrick](mailto:darciefitzpatrick@gmail.com) - Product Design, Product Management + User Research
+- [Cat Zhang](mailto:cielzee@gmail.com) - Product Management + Product Design
+- [Joseph Greubel](mailto:joegreubel1@gmail.com) - Front-end Development, Back-end Development
+- [Michael Oleske](mailto:moleske@pivotal.io) - Back-end Development
 
-## Development
+Take a look at the tech talk we presented about the making of Parrit: https://youtu.be/YVMuMK5Ru_A
 
-Ensure all packages are installed by running:
+## Want to contribute?
 
-```sh
-npm install
-```
+- See [Contributing](./docs/Contributing.md)
 
-Run
+## Running Server Locally
 
-```sh
-netlify dev
-```
-
-Open up [http://localhost:3000](http://localhost:3000), and you're ready to go!
-
-### Adding Redirects and Rewrites
-
-To add redirects and rewrites, add them to the `netlify.toml` file. For more information about redirects and rewrites, see the [Netlify docs](https://docs.netlify.com/routing/redirects/).
-
-### Serve your site locally
-
-To serve your site locally in a production-like environment, run
-
-```sh
-npm run start
-```
-
-Your site will be available at [http://localhost:8888](http://localhost:8888). Note that it will not auto-reload when you make changes.
-
-## Deployment
-
-There are two ways to deploy your app to Netlify, you can either link your app to your git repo and have it auto deploy changes to Netlify, or you can deploy your app manually. If you've followed the setup instructions already, all you need to do is run this:
-
-```sh
-# preview deployment
-netlify deploy --build
-
-# production deployment
-netlify deploy --build --prod
-```
+1. Create postgres user with name `parrit` password `parrit`
+2. create new database called `local_parrit`
+3. migrate the database with `gradle migrate`
+4. Run application through `gradle bootRun`

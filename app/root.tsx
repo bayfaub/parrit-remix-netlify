@@ -8,11 +8,12 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import { ContextStack } from "./contexts/ContextStack";
 
 export const meta: MetaFunction = () => [
   {
     charset: "utf-8",
-    title: "New Remix App",
+    title: "Parrit",
     viewport: "width=device-width,initial-scale=1",
   },
 ];
@@ -29,7 +30,9 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
+        <ContextStack>
+          <Outlet />
+        </ContextStack>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
