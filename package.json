@@ -12,7 +12,7 @@
     "dev:css": "npm run build:css && node-sass -rw ./styles -o ./app/styles"
   },
   "dependencies": {
-    "@netlify/functions": "^2.0.0",
+    "@netlify/functions": "^2.4.1",
     "@netlify/remix-adapter": "^2.0.0",
     "@remix-run/css-bundle": "^2.5.0",
     "@remix-run/node": "^2.5.0",
