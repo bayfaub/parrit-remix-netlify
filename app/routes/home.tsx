@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type { FormEvent } from "react";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import type { ErrorResponse } from "~/models/Error.model";
 
 import { Button } from "~/ui/Button";
 import { Footer } from "~/ui/Footer";
 
 import "~/styles/home.css";
+import { DatabaseContext } from "~/contexts/DatabaseContext";
 
 interface Target {
   value: string;
@@ -19,6 +20,7 @@ interface Event {
 
 const HomePage: React.FC = () => {
   // const { postLoginAndRedirect, postProject } = useContext(ApiContext);
+  const { supabase } = useContext(DatabaseContext);
   const [newProjectName, setNewProjectName] = useState("");
   const [newProjectPassword, setNewProjectPassword] = useState("");
   const [loginProjectName, setLoginProjectName] = useState("");
@@ -56,6 +58,7 @@ const HomePage: React.FC = () => {
 
   const createProjectWithName = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    supabase.from("project").insert({ name: newProjectName });
     // postProject(newProjectName, newProjectPassword)
     //   .then(() => {
     //     postLoginAndRedirect(newProjectName, newProjectPassword);

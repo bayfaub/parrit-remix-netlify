@@ -1,9 +1,10 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { Database } from "database.types";
 import { type Result } from "netlify/functions/fetch-database-env";
 import React, { ReactNode, useEffect, useState } from "react";
 
 export interface IDatabaseContext {
-  supabase: SupabaseClient;
+  supabase: SupabaseClient<Database>;
 }
 
 export const DatabaseContext = React.createContext({} as IDatabaseContext);
@@ -19,7 +20,7 @@ export const DatabaseProvider: React.FC<{ children: ReactNode }> = (props) => {
             "database response did not contain necessary information"
           );
         }
-        setSupabase(createClient(json.databaseUrl, json.databaseKey));
+        setSupabase(createClient<Database>(json.databaseUrl, json.databaseKey));
       });
     });
   }, []);
