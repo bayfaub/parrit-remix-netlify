@@ -20,6 +20,13 @@ Visit the app: https://parrit.io/
 2. [Install Docker](https://docs.docker.com/get-docker/)
 3. `supabase start` (this will take awhile on first launch)
 4. you can stop supabase with `supabase stop`
+5. link your project with `supabase link`
+6. clone the remote project with `supabase db pull`
+
+### Start localhost
+
+1. `npm i netlify-cli -g`
+2. `netlify dev`
 
 ## Core Contributors
 
@@ -36,10 +43,3 @@ Take a look at the tech talk we presented about the making of Parrit: https://yo
 ## Want to contribute?
 
 - See [Contributing](./docs/Contributing.md)
-
-## Running Server Locally
-
-1. Create postgres user with name `parrit` password `parrit`
-2. create new database called `local_parrit`
-3. migrate the database with `gradle migrate`
-4. Run application through `gradle bootRun`

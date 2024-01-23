@@ -60,9 +60,6 @@ ALTER TABLE "supabase_migrations"."schema_migrations" OWNER TO "postgres";
 ALTER TABLE ONLY "public"."project"
     ADD CONSTRAINT "project_pkey" PRIMARY KEY ("id");
 
-ALTER TABLE ONLY "supabase_migrations"."schema_migrations"
-    ADD CONSTRAINT "schema_migrations_pkey" PRIMARY KEY ("version");
-
 ALTER TABLE "public"."project" ENABLE ROW LEVEL SECURITY;
 
 GRANT USAGE ON SCHEMA "public" TO "postgres";

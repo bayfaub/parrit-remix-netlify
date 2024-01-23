@@ -6,8 +6,8 @@ import type { ErrorResponse } from "~/models/Error.model";
 import { Button } from "~/ui/Button";
 import { Footer } from "~/ui/Footer";
 
-import "~/styles/home.css";
 import { DatabaseContext } from "~/contexts/DatabaseContext";
+import "~/styles/home.css";
 
 interface Target {
   value: string;
@@ -58,14 +58,20 @@ const HomePage: React.FC = () => {
 
   const createProjectWithName = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    supabase.from("project").insert({ name: newProjectName });
-    // postProject(newProjectName, newProjectPassword)
-    //   .then(() => {
-    //     postLoginAndRedirect(newProjectName, newProjectPassword);
-    //   })
-    //   .catch((errorResponse: ErrorResponse) => {
-    //     setNewProjectErrorResponse(errorResponse);
-    //   });
+    const req = new Request("/.netlify/functions/create-new-project", {
+      method: "POST",
+      body: JSON.stringify({
+        name: newProjectName,
+        password: newProjectPassword,
+      }),
+    });
+    fetch(req)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((errorResponse: ErrorResponse) => {
+        setNewProjectErrorResponse(errorResponse);
+      });
   };
 
   return (
