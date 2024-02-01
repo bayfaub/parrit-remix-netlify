@@ -18,15 +18,19 @@ Visit the app: https://parrit.io/
 
 1. [Install supabase cli](https://supabase.com/docs/guides/cli/getting-started)
 2. [Install Docker](https://docs.docker.com/get-docker/)
-3. `supabase start` (this will take awhile on first launch)
+3. `supabase start` (this will take awhile on first launch, note down your supabase postgresql database url and supabase anon key)
 4. you can stop supabase with `supabase stop`
-5. link your project with `supabase link`
+5. Email [Anthony Dreessen](mailto:anthonydreessen@gmail.com) for access to the Parrit supabase org.
+
+5. link your project with `supabase link` to the `parrit-remix` supabase project.
 6. clone the remote project with `supabase db pull`
 
 ### Start localhost
 
 1. `npm i netlify-cli -g`
-2. `netlify dev`
+2. create a .env file in the parrit-remix-netlify directory
+3. set environment variables in your .env file: SUPABASE_URL="{postgresql db url }" , SUPABASE_KEY = "{supabase anon key}" (if you need to find your anon key or db url just run `supabase stop` and then `supabase start` and )
+4. `netlify dev`
 
 ## Core Contributors
 

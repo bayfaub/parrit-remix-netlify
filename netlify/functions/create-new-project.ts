@@ -14,8 +14,8 @@ export default async (req: Request, context: Context) => {
   if (!databaseUrl || !databaseKey) {
     throw new Error("Failed to initialize database; missing config params");
   }
-  const { name, password: plaintextPassword } = await req.json();
-  if (!name || !plaintextPassword) {
+  const { name, password } = await req.json();
+  if (!name || !password) {
     return {
       statusCode: 400,
       body: JSON.stringify({
@@ -25,10 +25,10 @@ export default async (req: Request, context: Context) => {
   }
   const supabase = createClient(databaseUrl, databaseKey);
   try {
-    const hashedPassword = await hashPassword(plaintextPassword);
+    const hashedPassword = await hashPassword(password);
     const result = await supabase
       .from("project")
-      .insert({ name, ...hashedPassword });
+      .insert({ name, ...hashedPassword});
     if (result.error) {
       return new Response(JSON.stringify(result), {
         status: 500,
