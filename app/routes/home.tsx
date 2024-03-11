@@ -8,6 +8,7 @@ import { Footer } from "~/ui/Footer";
 
 import { DatabaseContext } from "~/contexts/DatabaseContext";
 import "~/styles/home.css";
+import { useLoaderData } from "@remix-run/react";
 
 interface Target {
   value: string;
@@ -18,9 +19,15 @@ interface Event {
   preventDefault: VoidFunction;
 }
 
+
+export function loader(){
+  return {id: 1, name: "john"}
+}
+
 const HomePage: React.FC = () => {
   // const { postLoginAndRedirect, postProject } = useContext(ApiContext);
   const { supabase } = useContext(DatabaseContext);
+  const loaderData = useLoaderData();
   const [newProjectName, setNewProjectName] = useState("");
   const [newProjectPassword, setNewProjectPassword] = useState("");
   const [loginProjectName, setLoginProjectName] = useState("");
@@ -83,6 +90,8 @@ const HomePage: React.FC = () => {
             A historical recommendation engine for daily pair rotation
             management, with an interactive visual aide of each pairing team.
           </div>
+
+          <pre>{JSON.stringify(loaderData)}</pre>
 
           <div className="forms-container">
             <form className="form new-form" onSubmit={createProjectWithName}>
