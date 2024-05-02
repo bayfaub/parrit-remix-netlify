@@ -5,6 +5,7 @@ node_modules
 /build
 .env
 .vscode
+.vscode/extensions.json
 
 # Local Netlify folder
 .netlify
