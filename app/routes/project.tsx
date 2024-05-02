@@ -23,7 +23,6 @@ type projectLoaderData = {
 export async function loader({
     request,
 }: LoaderFunctionArgs): Promise<projectLoaderData> {
-    console.log("Authenticating...");
     let user = await authenticate(request);
     let project = await getProject(request);
 
