@@ -1,4 +1,4 @@
 export interface ErrorResponse {
-    message?: string;
-    fieldErrors?: { email?: string; password?: string };
+  message?: string;
+  fieldErrors?: { email?: string; password?: string };
 }

@@ -4,18 +4,18 @@ import { signOut } from "~/api/signOut";
 import { createSupabaseServerClient } from "~/util/supabase/supabase.server";
 
 export async function action({ request }: ActionFunctionArgs) {
-    let supabaseClient = await createSupabaseServerClient(request);
-    let error = await signOut(supabaseClient);
+  let supabaseClient = await createSupabaseServerClient(request);
+  let error = await signOut(supabaseClient);
 
-    let session = await getSession(request.headers.get("Cookie"));
+  let session = await getSession(request.headers.get("Cookie"));
 
-    if (error) {
-        return json({ success: "Failed." }, { status: 500 });
-    }
+  if (error) {
+    return json({ success: "Failed." }, { status: 500 });
+  }
 
-    return redirect("/home", {
-        headers: {
-            "Set-Cookie": await destroySession(session),
-        },
-    });
+  return redirect("/home", {
+    headers: {
+      "Set-Cookie": await destroySession(session),
+    },
+  });
 }
