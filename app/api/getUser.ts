@@ -17,7 +17,6 @@ export async function getUser(supabaseClient: SupabaseClient): Promise<getUserRe
     }
     return { ...user };
   } catch (e) {
-    console.error("Catch Error console.log: ", e);
     return { error: { message: "Failed to authenticate user." } };
   }
 }

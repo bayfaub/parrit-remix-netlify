@@ -21,7 +21,7 @@ export async function signUp(
     }
 
     let response = await supabaseClient.auth.signUp({ email, password });
-    console.log(response, "Response from signUp function");
+
     return response.data.session
       ? {
           accessToken: response.data.session.access_token,

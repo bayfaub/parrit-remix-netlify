@@ -57,8 +57,7 @@ export function setAuthSession(session: Session, accessToken: string, refreshTok
 async function refreshUserToken(session: Session, supabaseClient: SupabaseClient) {
   try {
     const { data, error } = await supabaseClient.auth.refreshSession(session.get("refresh_token"));
-    console.log("Data: ", data);
-    console.log("Error: ", error);
+
     if (error) {
       return { error: error.message };
     }
