@@ -24,7 +24,6 @@ export async function signIn(
       email,
       password,
     });
-    console.log(error, "Error from signIn function");
     return data.session
       ? {
           accessToken: data.session.access_token,
