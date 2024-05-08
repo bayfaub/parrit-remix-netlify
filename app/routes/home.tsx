@@ -16,7 +16,7 @@ import { signUp } from "~/api/signUp";
 import { signIn } from "~/api/signIn";
 
 type ActionData = {
-  _action: string;
+  action: string;
   error: ErrorResponse;
 };
 
@@ -37,17 +37,13 @@ export async function action({ request }: ActionFunctionArgs) {
   let supabaseClient = createSupabaseServerClient(request);
 
   if (_action == "sign-up") {
-    let { accessToken, refreshToken, error } = await signUp(
-      email,
-      password,
-      supabaseClient
-    );
+    let { accessToken, refreshToken, error } = await signUp(email, password, supabaseClient);
 
     if (error) {
-      return { _action, error: error };
+      return { action: _action, error: error };
     }
     if (!accessToken || !refreshToken) {
-      return { _action, error: { message: "Something went wrong" } };
+      return { action: _action, error: { message: "Something went wrong" } };
     }
     session = setAuthSession(session, accessToken, refreshToken);
 
@@ -59,19 +55,15 @@ export async function action({ request }: ActionFunctionArgs) {
   }
 
   if (_action == "login") {
-    let { accessToken, refreshToken, error } = await signIn(
-      email,
-      password,
-      supabaseClient
-    );
+    let { accessToken, refreshToken, error } = await signIn(email, password, supabaseClient);
 
     if (error) {
-      return { _action, error: error };
+      return { action: _action, error: error };
     }
 
     if (!accessToken || !refreshToken) {
       return {
-        _action,
+        action: _action,
         error: { message: "Something is wrong with your credentials." },
       };
     }
@@ -90,11 +82,11 @@ export default function Home() {
 
   let actionData = useActionData<ActionData>();
 
-  if (actionData?.error && actionData?._action == "sign-up") {
+  if (actionData?.error && actionData?.action == "sign-up") {
     signUpErrorResponse = actionData?.error;
   }
 
-  if (actionData?.error && actionData?._action == "login") {
+  if (actionData?.error && actionData?.action == "login") {
     loginErrorResponse = actionData?.error;
   }
 
@@ -104,8 +96,8 @@ export default function Home() {
         <div className="dashboard-content">
           <div className="logo" />
           <div className="description">
-            A historical recommendation engine for daily pair rotation
-            management, with an interactive visual aide of each pairing team.
+            A historical recommendation engine for daily pair rotation management, with an
+            interactive visual aide of each pairing team.
           </div>
 
           <div className="forms-container">
@@ -113,17 +105,13 @@ export default function Home() {
               <input type="hidden" name="_action" value="sign-up"></input>
               <h2 className="form-label">Create an account</h2>
               <input
-                className={
-                  signUpErrorResponse?.fieldErrors?.email ? "error" : ""
-                }
+                className={signUpErrorResponse?.fieldErrors?.email ? "error" : ""}
                 type="text"
                 name="email"
                 placeholder="Email"
               />
               <input
-                className={
-                  signUpErrorResponse.fieldErrors?.password ? "error" : ""
-                }
+                className={signUpErrorResponse.fieldErrors?.password ? "error" : ""}
                 type="password"
                 name="password"
                 placeholder="Password"
@@ -148,9 +136,7 @@ export default function Home() {
                 placeholder="Email"
               />
               <input
-                className={
-                  loginErrorResponse.fieldErrors?.password ? "error" : ""
-                }
+                className={loginErrorResponse.fieldErrors?.password ? "error" : ""}
                 type="password"
                 name="password"
                 placeholder="Password"

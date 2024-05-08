@@ -1,10 +1,6 @@
 import { type SupabaseClient, type User } from "@supabase/supabase-js";
 import { ErrorResponse } from "~/models/Error.model";
-import {
-  commitSession,
-  destroySession,
-  getSession,
-} from "~/util/supabase/supabase.server";
+import { commitSession, destroySession, getSession } from "~/util/supabase/supabase.server";
 import { Session, redirect, json } from "@remix-run/node";
 import { createSupabaseServerClient } from "~/util/supabase/supabase.server";
 
@@ -17,10 +13,7 @@ export async function authenticate(request: Request, redirectTo?: string) {
     let hasActiveSession = hasActiveAuthSession(session);
 
     if (!hasActiveSession) {
-      const { accessToken, refreshToken, error } = await refreshUserToken(
-        session,
-        supabaseClient
-      );
+      const { accessToken, refreshToken, error } = await refreshUserToken(session, supabaseClient);
       if (error || !accessToken || !refreshToken) {
         throw new Error("Failed to refresh user token.");
       }
@@ -34,9 +27,7 @@ export async function authenticate(request: Request, redirectTo?: string) {
       });
     }
 
-    const { data: user, error } = await supabaseClient.auth.getUser(
-      session.get("access_token")
-    );
+    const { data: user, error } = await supabaseClient.auth.getUser(session.get("access_token"));
 
     if (error || !user.user) {
       throw new Error("Failed to authenticate user.");
@@ -57,24 +48,15 @@ function hasActiveAuthSession(session: Session) {
   }
 }
 
-export function setAuthSession(
-  session: Session,
-  accessToken: string,
-  refreshToken: string
-) {
+export function setAuthSession(session: Session, accessToken: string, refreshToken: string) {
   session.set("access_token", accessToken);
   session.set("refresh_token", refreshToken);
   return session;
 }
 
-async function refreshUserToken(
-  session: Session,
-  supabaseClient: SupabaseClient
-) {
+async function refreshUserToken(session: Session, supabaseClient: SupabaseClient) {
   try {
-    const { data, error } = await supabaseClient.auth.refreshSession(
-      session.get("refresh_token")
-    );
+    const { data, error } = await supabaseClient.auth.refreshSession(session.get("refresh_token"));
     console.log("Data: ", data);
     console.log("Error: ", error);
     if (error) {

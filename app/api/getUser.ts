@@ -6,11 +6,8 @@ type getUserResponse = {
   error?: ErrorResponse;
 };
 
-export async function getUser(
-  supabaseClient: SupabaseClient
-): Promise<getUserResponse> {
+export async function getUser(supabaseClient: SupabaseClient): Promise<getUserResponse> {
   try {
-    console.log(supabaseClient);
     const { data: user, error } = await supabaseClient.auth.getUser();
 
     if (error || !user || !user == null) {

@@ -8,11 +8,7 @@ type SignInResponse = {
   error?: ErrorResponse;
 };
 
-export async function signIn(
-  email: string,
-  password: string,
-  supabaseClient: SupabaseClient
-): Promise<SignInResponse> {
+export async function signIn(email: string, password: string, supabaseClient: SupabaseClient): Promise<SignInResponse> {
   try {
     let validationError = validateLoginCredentials(email, password);
 

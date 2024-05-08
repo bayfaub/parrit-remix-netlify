@@ -8,10 +8,7 @@ export async function getProject(request: Request) {
   let supabaseClient: SupabaseClient = createSupabaseServerClient(request);
 
   let user = await getUser(supabaseClient);
-  let project = await supabaseClient
-    .from("project")
-    .select("*")
-    .eq("id", user.user?.id);
+  let project = await supabaseClient.from("project").select("*").eq("id", user.user?.id);
 
   console.log("Get the project: ", project);
 
